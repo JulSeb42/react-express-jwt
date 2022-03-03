@@ -12,9 +12,6 @@ const siteData = {
     type: "",
     language: "en_EN",
     keywords: [],
-
-    // API
-    apiUrl: "http://localhost:5005",
 }
 
 export default siteData

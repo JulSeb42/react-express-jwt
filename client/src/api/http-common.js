@@ -1,9 +1,10 @@
 // Packages
 import axios from "axios"
-import siteData from "../data/siteData"
+
+const apiUrl = "http://localhost:5005"
 
 export default axios.create({
-    baseURL: `${siteData.apiUrl}/api`,
+    baseURL: `${apiUrl}/api`,
     headers: {
         "Content-type": "application/json",
     },

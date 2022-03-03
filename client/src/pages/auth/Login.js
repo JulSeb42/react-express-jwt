@@ -33,7 +33,7 @@ const Login = () => {
             .login(requestBody)
             .then(res => {
                 loginUser(res.data.authToken)
-                navigate("/")
+                navigate(-1)
             })
             .catch(err => {
                 const errorDescription = err.response.data.message

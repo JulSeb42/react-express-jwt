@@ -36,7 +36,7 @@ const EditAccount = ({ edited, setEdited }) => {
                 setUser(res.data.user)
                 setToken(res.data.authToken)
                 setEdited(!edited)
-                navigate("/my-account")
+                navigate(-1)
             })
             .catch(err => {
                 const errorDescription = err.response.data.message
