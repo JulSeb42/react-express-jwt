@@ -3,7 +3,7 @@ import React from "react"
 import { Font } from "components-react-julseb"
 
 // Components
-import Page from "../components/Page"
+import Page from "../components/layouts/Page"
 
 const Homepage = () => {
     return (

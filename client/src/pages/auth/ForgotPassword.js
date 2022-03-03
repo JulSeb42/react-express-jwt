@@ -13,7 +13,7 @@ import {
 import authService from "../../api/auth.service"
 
 // Components
-import Page from "../../components/Page"
+import Page from "../../components/layouts/Page"
 
 const ForgotPassword = () => {
     const navigate = useNavigate()
@@ -63,7 +63,11 @@ const ForgotPassword = () => {
                 />
             </Form>
 
-            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
+            {errorMessage && (
+                <Alert as={Font.P} color="danger">
+                    {errorMessage}
+                </Alert>
+            )}
         </Page>
     )
 }

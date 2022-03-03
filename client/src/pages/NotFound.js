@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { Font } from "components-react-julseb"
 
 // Components
-import Page from "../components/Page"
+import Page from "../components/layouts/Page"
 
 const NotFound = () => {
     return (

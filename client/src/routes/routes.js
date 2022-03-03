@@ -10,6 +10,12 @@ import Verify from "../pages/auth/Verify"
 import ForgotPassword from "../pages/auth/ForgotPassword"
 import ForgotSent from "../pages/auth/ForgotSent"
 import ResetPassword from "../pages/auth/ResetPassword"
+import Goodbye from "../pages/auth/Goodbye"
+
+// User
+import MyAccount from "../pages/user/MyAccount"
+import EditAccount from "../pages/user/EditAccount"
+import EditPassword from "../pages/user/EditPassword"
 
 // All routes
 const routes = [
@@ -77,6 +83,36 @@ const routes = [
         protected: false,
         anon: true,
         edit: false,
+    },
+    {
+        path: "/goodbye",
+        element: Goodbye,
+        protected: false,
+        anon: false,
+        edit: false,
+    },
+
+    // User
+    {
+        path: "/my-account",
+        element: MyAccount,
+        protected: true,
+        anon: false,
+        edit: false,
+    },
+    {
+        path: "/my-account/edit",
+        element: EditAccount,
+        protected: true,
+        anon: false,
+        edit: true,
+    },
+    {
+        path: "/my-account/edit-password",
+        element: EditPassword,
+        protected: true,
+        anon: false,
+        edit: true,
     },
 ]
 

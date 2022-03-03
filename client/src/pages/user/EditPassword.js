@@ -1,18 +1,20 @@
 // Packages
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { Font, Form, Input, Alert } from "components-react-julseb"
 
 // API
-import authService from "../../api/auth.service"
+import { AuthContext } from "../../context/auth"
+import userService from "../../api/user.service"
 
 // Components
 import Page from "../../components/layouts/Page"
 
-const ResetPassword = () => {
+const EditPassword = ({ edited, setEdited }) => {
+    const { user, setUser, setToken } = useContext(AuthContext)
     const navigate = useNavigate()
 
-    const title = "Reset your password"
+    const title = "Edit your password"
 
     // Form items
     const [password, setPassword] = useState("")
@@ -21,31 +23,30 @@ const ResetPassword = () => {
     // Form handles
     const handlePassword = e => setPassword(e.target.value)
 
-    // Get token and ID from url
-    const splittedUrl = window.location.href.split("/")
-    const token = splittedUrl[4]
-    const id = splittedUrl[5]
-
     // Submit form
     const handleSubmit = e => {
         e.preventDefault()
 
-        const requestBody = { password, resetToken: token, id }
-
-        authService
-            .resetPassword(requestBody)
-            .then(() => navigate("/login"))
-            .catch(err => {
-                const errorDescription = err.response.data.message
-                setErrorMessage(errorDescription)
+        userService
+            .editPassword(user._id, { password })
+            .then(res => {
+                setUser(res.data.user)
+                setToken(res.data.authToken)
+                setEdited(!edited)
+                navigate("/my-account")
             })
+            .catch(err => setErrorMessage(err.response.data.message))
     }
 
     return (
         <Page title={title} template="form">
             <Font.H1>{title}</Font.H1>
 
-            <Form btnprimary="Reset your password" onSubmit={handleSubmit}>
+            <Form
+                onSubmit={handleSubmit}
+                btnprimary="Save changes"
+                btncancel="/my-account"
+            >
                 <Input
                     label="New password"
                     id="password"
@@ -56,13 +57,9 @@ const ResetPassword = () => {
                 />
             </Form>
 
-            {errorMessage && (
-                <Alert as={Font.P} color="danger">
-                    {errorMessage}
-                </Alert>
-            )}
+            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
         </Page>
     )
 }
 
-export default ResetPassword
+export default EditPassword

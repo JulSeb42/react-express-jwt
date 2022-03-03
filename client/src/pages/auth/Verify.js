@@ -8,11 +8,11 @@ import { AuthContext } from "../../context/auth"
 import authService from "../../api/auth.service"
 
 // Components
-import Page from "../../components/Page"
+import Page from "../../components/layouts/Page"
 
 const Verify = ({ edited, setEdited }) => {
     // Context
-    const { user, isLoggedIn } = useContext(AuthContext)
+    const { user, isLoggedIn, setUser, setToken } = useContext(AuthContext)
 
     const [isLoading, setIsLoading] = useState(true)
     const [verified, setVerified] = useState(false)
@@ -22,10 +22,16 @@ const Verify = ({ edited, setEdited }) => {
     const userId = splittedUrl[5]
 
     setTimeout(() => {
-        if (isLoggedIn && user._id === userId && user.verifyToken === verifyToken) {     
+        if (
+            isLoggedIn &&
+            user._id === userId &&
+            user.verifyToken === verifyToken
+        ) {
             authService
                 .verify({ id: userId })
-                .then(() => {
+                .then(res => {
+                    setUser(res.data.user)
+                    setToken(res.data.authToken)
                     setVerified(true)
                     setEdited(!edited)
                 })

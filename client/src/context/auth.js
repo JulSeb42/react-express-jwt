@@ -1,9 +1,8 @@
 // Packages
 import React, { useState, useEffect, createContext } from "react"
-import axios from "axios"
 
-// Data
-import siteData from "../data/siteData"
+// API
+import authService from "../api/auth.service"
 
 // Create context
 const AuthContext = createContext()
@@ -18,6 +17,11 @@ const AuthProviderWrapper = props => {
         verifyStoredToken()
     }
 
+    const setToken = token => {
+        localStorage.setItem("authToken", token)
+        setIsLoggedIn(true)
+    }
+
     const logoutUser = () => {
         localStorage.removeItem("authToken")
         setIsLoggedIn(false)
@@ -28,8 +32,8 @@ const AuthProviderWrapper = props => {
         const storedToken = localStorage.getItem("authToken")
 
         if (storedToken) {
-            axios
-                .get(`${siteData.apiUrl}/api/auth/loggedin`, {
+            authService
+                .loggedIn({
                     headers: {
                         Authorization: `Bearer ${storedToken}`,
                     },
@@ -57,7 +61,7 @@ const AuthProviderWrapper = props => {
 
     return (
         <AuthContext.Provider
-            value={{ isLoggedIn, isLoading, user, loginUser, logoutUser }}
+            value={{ isLoggedIn, isLoading, user, setUser, loginUser, logoutUser, setToken }}
         >
             {props.children}
         </AuthContext.Provider>

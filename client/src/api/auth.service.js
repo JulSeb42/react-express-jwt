@@ -9,8 +9,8 @@ class AuthService {
         return http.post("/auth/login", data)
     }
 
-    loggedIn() {
-        return http.get("/auth/loggedin")
+    loggedIn(data) {
+        return http.get("/auth/loggedin", data)
     }
 
     verify(data) {

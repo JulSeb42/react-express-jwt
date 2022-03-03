@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/auth"
 import authService from "../../api/auth.service"
 
 // Components
-import Page from "../../components/Page"
+import Page from "../../components/layouts/Page"
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext)
@@ -64,7 +64,11 @@ const Login = () => {
                 />
             </Form>
 
-            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
+            {errorMessage && (
+                <Alert as={Font.P} color="danger">
+                    {errorMessage}
+                </Alert>
+            )}
 
             <Font.P>
                 <Link to="/login/forgot-password">I forgot my password.</Link>

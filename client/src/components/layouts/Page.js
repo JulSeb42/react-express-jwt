@@ -6,7 +6,7 @@ import { Helmet, Wrapper, Main } from "components-react-julseb"
 import Header from "./Header"
 
 // Data
-import siteData from "../data/siteData"
+import siteData from "../../data/siteData"
 
 const Page = props => {
     return (

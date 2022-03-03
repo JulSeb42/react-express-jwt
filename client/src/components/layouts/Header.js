@@ -5,10 +5,10 @@ import styled, { css } from "styled-components"
 import { Burger, Variables } from "components-react-julseb"
 
 // API
-import { AuthContext } from "../context/auth"
+import { AuthContext } from "../../context/auth"
 
 // Data
-import siteData from "../data/siteData"
+import siteData from "../../data/siteData"
 
 // Styles
 const Container = styled.header`
