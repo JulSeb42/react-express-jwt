@@ -1,6 +1,6 @@
-# React / Express basic auth
+# React / Express JSON Web Token
 
-Boilerplate for basic authentification for React with Express backend.
+Boilerplate for authentication with React, Express, JWT and MongoDb.
 
 ## Install packages
 
@@ -28,4 +28,6 @@ MONGODB_URI=mongodb://localhost/name-of-your-app
 
 EMAIL=your-email@gmail.com
 WORD=YourPasswordForGmail
+
+TOKEN_SECRET=random-phrase
 ```
