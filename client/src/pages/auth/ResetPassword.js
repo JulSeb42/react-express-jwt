@@ -9,6 +9,9 @@ import authService from "../../api/auth.service"
 // Components
 import Page from "../../components/layouts/Page"
 
+// Utils
+import { passwordRegex } from "../../components/utils/regex"
+
 const ResetPassword = () => {
     const navigate = useNavigate()
 
@@ -16,10 +19,19 @@ const ResetPassword = () => {
 
     // Form items
     const [password, setPassword] = useState("")
+    const [validation, setValidation] = useState("not-passed")
     const [errorMessage, setErrorMessage] = useState(undefined)
 
     // Form handles
-    const handlePassword = e => setPassword(e.target.value)
+    const handlePassword = e => {
+        setPassword(e.target.value)
+
+        if (passwordRegex.test(e.target.value)) {
+            setValidation("passed")
+        } else {
+            setValidation("not-passed")
+        }
+    }
 
     // Get token and ID from url
     const splittedUrl = window.location.href.split("/")
@@ -53,6 +65,8 @@ const ResetPassword = () => {
                     iconpassword
                     onChange={handlePassword}
                     value={password}
+                    validationText="Password must be at least 6 characters long and must contain at least one number, one lowercase and one uppercase letter."
+                    validation={validation}
                 />
             </Form>
 

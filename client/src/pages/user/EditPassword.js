@@ -10,6 +10,9 @@ import userService from "../../api/user.service"
 // Components
 import Page from "../../components/layouts/Page"
 
+// Utils
+import { passwordRegex } from "../../components/utils/regex"
+
 const EditPassword = ({ edited, setEdited }) => {
     const { user, setUser, setToken } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -18,10 +21,19 @@ const EditPassword = ({ edited, setEdited }) => {
 
     // Form items
     const [password, setPassword] = useState("")
+    const [validation, setValidation] = useState("not-passed")
     const [errorMessage, setErrorMessage] = useState(undefined)
 
     // Form handles
-    const handlePassword = e => setPassword(e.target.value)
+    const handlePassword = e => {
+        setPassword(e.target.value)
+
+        if (passwordRegex.test(e.target.value)) {
+            setValidation("passed")
+        } else {
+            setValidation("not-passed")
+        }
+    }
 
     // Submit form
     const handleSubmit = e => {
@@ -54,6 +66,8 @@ const EditPassword = ({ edited, setEdited }) => {
                     iconpassword
                     onChange={handlePassword}
                     value={password}
+                    validationText="Password must be at least 6 characters long and must contain at least one number, one lowercase and one uppercase letter."
+                    validation={validation}
                 />
             </Form>
 

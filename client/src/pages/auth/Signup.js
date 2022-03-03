@@ -16,6 +16,9 @@ import authService from "../../api/auth.service"
 // Components
 import Page from "../../components/layouts/Page"
 
+// Utils
+import { passwordRegex } from "../../components/utils/regex"
+
 const Signup = () => {
     const { loginUser } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -24,12 +27,21 @@ const Signup = () => {
     const [fullName, setFullName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [validation, setValidation] = useState("not-passed")
     const [errorMessage, setErrorMessage] = useState(undefined)
 
     // Form handles
     const handleFullName = e => setFullName(e.target.value)
     const handleEmail = e => setEmail(e.target.value)
-    const handlePassword = e => setPassword(e.target.value)
+    const handlePassword = e => {
+        setPassword(e.target.value)
+
+        if (passwordRegex.test(e.target.value)) {
+            setValidation("passed")
+        } else {
+            setValidation("not-passed")
+        }
+    }
 
     // Submit form
     const handleSubmit = e => {
@@ -81,6 +93,8 @@ const Signup = () => {
                     iconpassword
                     onChange={handlePassword}
                     value={password}
+                    validationText="Password must be at least 6 characters long and must contain at least one number, one lowercase and one uppercase letter."
+                    validation={validation}
                 />
             </Form>
 
