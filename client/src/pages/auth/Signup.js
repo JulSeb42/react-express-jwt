@@ -6,8 +6,8 @@ import {
     Form,
     Input,
     Alert,
-    getRandomString,
 } from "components-react-julseb"
+import { getRandomString, passwordRegex } from "js-utils-julseb"
 
 // API
 import { AuthContext } from "../../context/auth"
@@ -15,9 +15,6 @@ import authService from "../../api/auth.service"
 
 // Components
 import Page from "../../components/layouts/Page"
-
-// Utils
-import { passwordRegex } from "../../components/utils/regex"
 
 const Signup = () => {
     const { loginUser } = useContext(AuthContext)
@@ -70,7 +67,7 @@ const Signup = () => {
         <Page title="Signup" template="form">
             <Font.H1>Create an account</Font.H1>
 
-            <Form btnprimary="Create your account" onSubmit={handleSubmit}>
+            <Form btnPrimary="Create your account" onSubmit={handleSubmit}>
                 <Input
                     label="Full name"
                     id="fullName"
@@ -90,7 +87,7 @@ const Signup = () => {
                     label="Password"
                     id="password"
                     password
-                    iconpassword
+                    iconPassword
                     onChange={handlePassword}
                     value={password}
                     validationText="Password must be at least 6 characters long and must contain at least one number, one lowercase and one uppercase letter."

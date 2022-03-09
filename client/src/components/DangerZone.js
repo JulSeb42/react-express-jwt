@@ -20,7 +20,7 @@ const DangerZone = props => {
                 {props.textBtnOpen}
             </Button>
 
-            <Modal className={isOpen && "open"}>
+            <Modal open={isOpen}>
                 <Alert color="danger">
                     <Font.P>{props.text}</Font.P>
 
@@ -30,7 +30,7 @@ const DangerZone = props => {
                         </Button>
 
                         <Button
-                            btnstyle="text"
+                            btnStyle="text"
                             onClick={() => setIsOpen(false)}
                         >
                             No, cancel

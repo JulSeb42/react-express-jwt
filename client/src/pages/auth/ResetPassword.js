@@ -2,15 +2,13 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Font, Form, Input, Alert } from "components-react-julseb"
+import { passwordRegex } from "js-utils-julseb"
 
 // API
 import authService from "../../api/auth.service"
 
 // Components
 import Page from "../../components/layouts/Page"
-
-// Utils
-import { passwordRegex } from "../../components/utils/regex"
 
 const ResetPassword = () => {
     const navigate = useNavigate()
@@ -57,12 +55,12 @@ const ResetPassword = () => {
         <Page title={title} template="form">
             <Font.H1>{title}</Font.H1>
 
-            <Form btnprimary="Reset your password" onSubmit={handleSubmit}>
+            <Form btnPrimary="Reset your password" onSubmit={handleSubmit}>
                 <Input
                     label="New password"
                     id="password"
                     password
-                    iconpassword
+                    iconPassword
                     onChange={handlePassword}
                     value={password}
                     validationText="Password must be at least 6 characters long and must contain at least one number, one lowercase and one uppercase letter."

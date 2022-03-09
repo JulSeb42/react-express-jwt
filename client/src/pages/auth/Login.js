@@ -45,7 +45,7 @@ const Login = () => {
         <Page title="Login" template="form">
             <Font.H1>Log in</Font.H1>
 
-            <Form btnprimary="Login" onSubmit={handleSubmit}>
+            <Form btnPrimary="Login" onSubmit={handleSubmit}>
                 <Input
                     label="Email"
                     id="email"
@@ -58,7 +58,7 @@ const Login = () => {
                     label="Password"
                     id="password"
                     password
-                    iconpassword
+                    iconPassword
                     onChange={handlePassword}
                     value={password}
                 />

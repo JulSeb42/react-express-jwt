@@ -2,6 +2,7 @@
 import React, { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { Font, Form, Input, Alert } from "components-react-julseb"
+import { passwordRegex } from "js-utils-julseb"
 
 // API
 import { AuthContext } from "../../context/auth"
@@ -9,9 +10,6 @@ import userService from "../../api/user.service"
 
 // Components
 import Page from "../../components/layouts/Page"
-
-// Utils
-import { passwordRegex } from "../../components/utils/regex"
 
 const EditPassword = ({ edited, setEdited }) => {
     const { user, setUser, setToken } = useContext(AuthContext)
@@ -56,14 +54,14 @@ const EditPassword = ({ edited, setEdited }) => {
 
             <Form
                 onSubmit={handleSubmit}
-                btnprimary="Save changes"
-                btncancel="/my-account"
+                btnPrimary="Save changes"
+                btnCancel="/my-account"
             >
                 <Input
                     label="New password"
                     id="password"
                     password
-                    iconpassword
+                    iconPassword
                     onChange={handlePassword}
                     value={password}
                     validationText="Password must be at least 6 characters long and must contain at least one number, one lowercase and one uppercase letter."

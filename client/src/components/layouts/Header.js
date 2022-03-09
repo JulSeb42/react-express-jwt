@@ -16,7 +16,7 @@ const Container = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: ${Variables.Margins.M} 5vw;
+    padding: ${Variables.Spacers.M} 5vw;
     position: relative;
 `
 
@@ -34,7 +34,7 @@ const Nav = styled.nav`
     align-items: center;
 
     & > *:not(:last-child) {
-        margin-right: ${Variables.Margins.M};
+        margin-right: ${Variables.Spacers.M};
     }
 
     @media ${Variables.Breakpoints.Mobile} {
@@ -44,14 +44,14 @@ const Nav = styled.nav`
         left: 0;
         width: 100%;
         top: -200px;
-        padding: ${Variables.Margins.XS} 5vw;
+        padding: ${Variables.Spacers.XS} 5vw;
         z-index: 999;
         background-color: ${Variables.Colors.White};
         transition: ${Variables.Transitions.Short};
 
         & > *:not(:last-child) {
             margin-right: 0;
-            margin-bottom: ${Variables.Margins.XS};
+            margin-bottom: ${Variables.Spacers.XS};
         }
 
         ${props =>
@@ -107,7 +107,7 @@ const Header = () => {
                 height={20}
                 onClick={() => setIsOpen(!isOpen)}
                 color="currentColor"
-                className={isOpen && "open"}
+                open={isOpen}
             />
 
             <Nav isOpen={isOpen}>

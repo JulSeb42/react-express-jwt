@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken")
 const User = require("../models/User.model")
 
 // Utils
-const { passwordRegex } = require("../utils/regex")
+const { passwordRegex } = require("js-utils-julseb")
 const jwtConfig = require("../utils/jwtConfig")
 
 // Salt password

@@ -10,7 +10,7 @@ const User = require("../models/User.model")
 const { isAuthenticated } = require("../middleware/jwt.middleware")
 
 // Utils
-const { passwordRegex, emailRegex } = require("../utils/regex")
+const { passwordRegex, emailRegex } = require("js-utils-julseb")
 const jwtConfig = require("../utils/jwtConfig")
 const transporter = require("../utils/transporter")
 

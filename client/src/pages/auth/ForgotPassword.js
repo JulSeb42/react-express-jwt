@@ -6,8 +6,8 @@ import {
     Form,
     Input,
     Alert,
-    getRandomString,
 } from "components-react-julseb"
+import { getRandomString } from "js-utils-julseb"
 
 // API
 import authService from "../../api/auth.service"
@@ -53,7 +53,7 @@ const ForgotPassword = () => {
                 reset your password.
             </Font.P>
 
-            <Form btnprimary="Send" btncancel="/login" onSubmit={handleSubmit}>
+            <Form btnPrimary="Send" btnCancel="/login" onSubmit={handleSubmit}>
                 <Input
                     label="Email"
                     id="email"

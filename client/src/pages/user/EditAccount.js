@@ -62,8 +62,8 @@ const EditAccount = ({ edited, setEdited }) => {
             <Font.H1>{title}</Font.H1>
 
             <Form
-                btnprimary="Save changes"
-                btncancel="/my-account"
+                btnPrimary="Save changes"
+                btnCancel="/my-account"
                 onSubmit={handleSubmit}
             >
                 <Input
