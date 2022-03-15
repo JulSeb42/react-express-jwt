@@ -1,6 +1,6 @@
 // Packages
 import React, { useContext, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { Font, PageLoading } from "components-react-julseb"
 
 // API
@@ -16,19 +16,17 @@ const Verify = ({ edited, setEdited }) => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [verified, setVerified] = useState(false)
-
-    const splittedUrl = window.location.href.split("/")
-    const verifyToken = splittedUrl[4]
-    const userId = splittedUrl[5]
+    
+    const { token, id } = useParams()
 
     setTimeout(() => {
         if (
             isLoggedIn &&
-            user._id === userId &&
-            user.verifyToken === verifyToken
+            user._id === id &&
+            user.verifyToken === token
         ) {
             authService
-                .verify({ id: userId })
+                .verify({ id: id })
                 .then(res => {
                     setUser(res.data.user)
                     setToken(res.data.authToken)

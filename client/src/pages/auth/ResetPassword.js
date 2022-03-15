@@ -1,6 +1,6 @@
 // Packages
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { Font, Form, Input, Alert } from "components-react-julseb"
 import { passwordRegex } from "js-utils-julseb"
 
@@ -32,9 +32,7 @@ const ResetPassword = () => {
     }
 
     // Get token and ID from url
-    const splittedUrl = window.location.href.split("/")
-    const token = splittedUrl[4]
-    const id = splittedUrl[5]
+    const { token, id } = useParams()
 
     // Submit form
     const handleSubmit = e => {
