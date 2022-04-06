@@ -69,7 +69,11 @@ const EditPassword = ({ edited, setEdited }) => {
                 />
             </Form>
 
-            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
+            {errorMessage && (
+                <Alert as={Font.P} color="danger">
+                    {errorMessage}
+                </Alert>
+            )}
         </Page>
     )
 }

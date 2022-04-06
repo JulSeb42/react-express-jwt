@@ -15,8 +15,6 @@ const EditAccount = ({ edited, setEdited }) => {
     const { user, setUser, setToken, logoutUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
-    const title = "Edit your account"
-
     // Form items
     const [fullName, setFullName] = useState(user.fullName)
     const [errorMessage, setErrorMessage] = useState(undefined)
@@ -39,8 +37,8 @@ const EditAccount = ({ edited, setEdited }) => {
                 navigate(-1)
             })
             .catch(err => {
-                const errorDescription = err.response.data.message
-                setErrorMessage(errorDescription)
+                setErrorMessage(err.response.data.message)
+                console.log(err)
             })
     }
 
@@ -58,14 +56,10 @@ const EditAccount = ({ edited, setEdited }) => {
     }
 
     return (
-        <Page title={title} template="form">
-            <Font.H1>{title}</Font.H1>
+        <Page title="Edit your account" template="form">
+            <Font.H1>Edit your account</Font.H1>
 
-            <Form
-                btnPrimary="Save changes"
-                btnCancel="/my-account"
-                onSubmit={handleSubmit}
-            >
+            <Form btnPrimary="Save changes" onSubmit={handleSubmit}>
                 <Input
                     label="Full name"
                     id="fullName"
@@ -75,13 +69,17 @@ const EditAccount = ({ edited, setEdited }) => {
 
                 <Input
                     label="Email"
-                    helperBottom="You can not edit your email"
                     value={user.email}
+                    helperBottom="You can not edit your email"
                     disabled
                 />
             </Form>
 
-            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
+            {errorMessage && (
+                <Alert as={Font.P} color="danger">
+                    {errorMessage}
+                </Alert>
+            )}
 
             <Font.P>
                 <Link to="/my-account/edit-password">Edit your password.</Link>

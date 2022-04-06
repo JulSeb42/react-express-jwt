@@ -1,12 +1,12 @@
-// Import routes
+// Basic pages
 import Homepage from "../pages/Homepage"
 import NotFound from "../pages/NotFound"
 
 // Auth
 import Signup from "../pages/auth/Signup"
 import ThankYou from "../pages/auth/ThankYou"
-import Login from "../pages/auth/Login"
 import Verify from "../pages/auth/Verify"
+import Login from "../pages/auth/Login"
 import ForgotPassword from "../pages/auth/ForgotPassword"
 import ForgotSent from "../pages/auth/ForgotSent"
 import ResetPassword from "../pages/auth/ResetPassword"
@@ -17,8 +17,9 @@ import MyAccount from "../pages/user/MyAccount"
 import EditAccount from "../pages/user/EditAccount"
 import EditPassword from "../pages/user/EditPassword"
 
-// All routes
+// Routes
 const routes = [
+    // Basic pages
     {
         path: "/",
         element: Homepage,

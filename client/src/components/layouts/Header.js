@@ -116,7 +116,9 @@ const Header = () => {
                 {isLoggedIn ? (
                     <>
                         <MenuLink to="/my-account">My account</MenuLink>
-                        <MenuLink as="button" onClick={logoutUser}>Log out</MenuLink>
+                        <MenuLink as="button" onClick={logoutUser}>
+                            Log out
+                        </MenuLink>
                     </>
                 ) : (
                     <>

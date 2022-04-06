@@ -1,12 +1,7 @@
 // Packages
 import React, { useState, useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import {
-    Font,
-    Form,
-    Input,
-    Alert,
-} from "components-react-julseb"
+import { Font, Form, Input, Alert } from "components-react-julseb"
 import { getRandomString, passwordRegex } from "js-utils-julseb"
 
 // API
@@ -64,7 +59,7 @@ const Signup = () => {
     }
 
     return (
-        <Page title="Signup" template="form">
+        <Page title="Sign up" template="form">
             <Font.H1>Create an account</Font.H1>
 
             <Form btnPrimary="Create your account" onSubmit={handleSubmit}>
