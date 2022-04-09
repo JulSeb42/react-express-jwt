@@ -66,6 +66,7 @@ const EditPassword = ({ edited, setEdited }) => {
                     value={password}
                     validationText="Password must be at least 6 characters long and must contain at least one number, one lowercase and one uppercase letter."
                     validation={validation}
+                    autoFocus
                 />
             </Form>
 

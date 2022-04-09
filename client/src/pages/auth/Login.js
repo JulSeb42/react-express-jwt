@@ -52,6 +52,7 @@ const Login = () => {
                     type="email"
                     onChange={handleEmail}
                     value={email}
+                    autoFocus
                 />
 
                 <Input

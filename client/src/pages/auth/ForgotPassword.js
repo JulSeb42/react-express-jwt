@@ -60,6 +60,7 @@ const ForgotPassword = () => {
                     type="email"
                     onChange={handleEmail}
                     value={email}
+                    autoFocus
                 />
             </Form>
 

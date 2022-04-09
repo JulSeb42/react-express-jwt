@@ -68,6 +68,7 @@ const Signup = () => {
                     id="fullName"
                     onChange={handleFullName}
                     value={fullName}
+                    autoFocus
                 />
 
                 <Input
