@@ -1,5 +1,5 @@
 // Package
-const jwt = require("express-jwt")
+const { expressjwt: jwt } = require("express-jwt")
 
 // Middleware
 const isAuthenticated = jwt({
