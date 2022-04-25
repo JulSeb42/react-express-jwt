@@ -6,7 +6,7 @@ import {
     Alert,
     ButtonsContainer,
     Font,
-} from "components-react-julseb"
+} from "tsx-library-julseb"
 
 const DangerZone = props => {
     const [isOpen, setIsOpen] = useState(false)

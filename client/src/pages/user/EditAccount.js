@@ -1,7 +1,7 @@
 // Packages
 import React, { useContext, useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
-import { Font, Form, Input, Alert } from "components-react-julseb"
+import { Font, Form, Input, Alert } from "tsx-library-julseb"
 
 // API
 import { AuthContext } from "../../context/auth"

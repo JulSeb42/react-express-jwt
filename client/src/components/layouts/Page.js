@@ -1,6 +1,6 @@
 // Packages
 import React from "react"
-import { Helmet, Wrapper, Main } from "components-react-julseb"
+import { Helmet, Wrapper, Main } from "tsx-library-julseb"
 
 // Components
 import Header from "./Header"

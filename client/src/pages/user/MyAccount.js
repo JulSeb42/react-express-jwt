@@ -1,8 +1,8 @@
 // Packages
 import React, { useContext } from "react"
 import { Link } from "react-router-dom"
-import { Font } from "components-react-julseb"
-import { getFirstName } from "js-utils-julseb"
+import { Font } from "tsx-library-julseb"
+import { getFirstName } from "ts-utils-julseb"
 
 // API
 import { AuthContext } from "../../context/auth"

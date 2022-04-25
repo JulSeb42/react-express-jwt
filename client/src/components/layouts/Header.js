@@ -1,8 +1,9 @@
 // Packages
 import React, { useContext, useState } from "react"
 import { Link, NavLink } from "react-router-dom"
-import styled, { css } from "styled-components"
-import { Burger, Variables } from "components-react-julseb"
+import styled from "@emotion/styled"
+import { css } from "@emotion/react"
+import { Burger, Variables } from "tsx-library-julseb"
 
 // API
 import { AuthContext } from "../../context/auth"
@@ -43,7 +44,7 @@ const Nav = styled.nav`
         align-items: flex-start;
         left: 0;
         width: 100%;
-        top: -200px;
+        top: ${props => (props.isOpen ? 56 : -200)}px;
         padding: ${Variables.Spacers.XS} 5vw;
         z-index: 999;
         background-color: ${Variables.Colors.White};
@@ -53,16 +54,10 @@ const Nav = styled.nav`
             margin-right: 0;
             margin-bottom: ${Variables.Spacers.XS};
         }
-
-        ${props =>
-            props.isOpen &&
-            css`
-                top: 56px;
-            `}
     }
 `
 
-const MenuLink = styled(NavLink)`
+const MenuLinkStyled = styled.span`
     text-decoration: none;
     color: ${Variables.Colors.Primary500};
     transition: ${Variables.Transitions.Short};
@@ -96,9 +91,29 @@ const Header = () => {
     // Mobile menu
     const [isOpen, setIsOpen] = useState(false)
 
+    // Menu link component => fix `as` prop with emotion
+    const MenuLink = props => {
+        return (
+            <MenuLinkStyled
+                as={
+                    props.to && props.logo
+                        ? Link
+                        : props.to && !props.logo
+                        ? NavLink
+                        : "button"
+                }
+                to={props.to}
+                logo={props.logo}
+                {...props}
+            >
+                {props.children}
+            </MenuLinkStyled>
+        )
+    }
+
     return (
         <Container>
-            <MenuLink as={Link} to="/" logo>
+            <MenuLink to="/" logo>
                 {siteData.name}
             </MenuLink>
 
@@ -111,19 +126,29 @@ const Header = () => {
             />
 
             <Nav isOpen={isOpen}>
-                <MenuLink to="/">Home</MenuLink>
+                <MenuLink to="/">
+                    Home
+                </MenuLink>
 
                 {isLoggedIn ? (
                     <>
-                        <MenuLink to="/my-account">My account</MenuLink>
-                        <MenuLink as="button" onClick={logoutUser}>
+                        <MenuLink to="/my-account">
+                            My account
+                        </MenuLink>
+
+                        <MenuLink onClick={logoutUser}>
                             Log out
                         </MenuLink>
                     </>
                 ) : (
                     <>
-                        <MenuLink to="/signup">Sign up</MenuLink>
-                        <MenuLink to="/login">Login</MenuLink>
+                        <MenuLink to="/signup">
+                            Sign up
+                        </MenuLink>
+
+                        <MenuLink to="/login">
+                            Login
+                        </MenuLink>
                     </>
                 )}
             </Nav>

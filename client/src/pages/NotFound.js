@@ -1,7 +1,7 @@
 // Packages
 import React from "react"
 import { Link } from "react-router-dom"
-import { Font } from "components-react-julseb"
+import { Font } from "tsx-library-julseb"
 
 // Components
 import Page from "../components/layouts/Page"

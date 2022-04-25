@@ -1,13 +1,8 @@
 // Packages
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import {
-    Font,
-    Form,
-    Input,
-    Alert,
-} from "components-react-julseb"
-import { getRandomString } from "js-utils-julseb"
+import { Font, Form, Input, Alert } from "tsx-library-julseb"
+import { getRandomString } from "ts-utils-julseb"
 
 // API
 import authService from "../../api/auth.service"

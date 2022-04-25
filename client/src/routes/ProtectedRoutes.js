@@ -1,7 +1,7 @@
 // Packages
 import React, { useContext } from "react"
 import { Navigate } from "react-router-dom"
-import { PageLoading } from "components-react-julseb"
+import { PageLoading } from "tsx-library-julseb"
 
 // Components
 import { AuthContext } from "../context/auth"
