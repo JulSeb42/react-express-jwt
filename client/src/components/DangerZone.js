@@ -1,5 +1,6 @@
 // Packages
 import React, { useState } from "react"
+import PropTypes from "prop-types"
 import {
     Button,
     Modal,
@@ -41,6 +42,13 @@ const DangerZone = ({ textBtnOpen, text, onClickPrimary, textBtnPrimary }) => {
             </Modal>
         </>
     )
+}
+
+DangerZone.propTypes = {
+    textBtnOpen: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    onClickPrimary: PropTypes.func.isRequired,
+    textBtnPrimary: PropTypes.string.isRequired,
 }
 
 export default DangerZone
