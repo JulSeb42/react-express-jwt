@@ -8,8 +8,9 @@ import {
     Font,
 } from "tsx-library-julseb"
 
-const DangerZone = props => {
+const DangerZone = ({ textBtnOpen, text, onClickPrimary, textBtnPrimary }) => {
     const [isOpen, setIsOpen] = useState(false)
+
     return (
         <>
             <Button
@@ -17,16 +18,16 @@ const DangerZone = props => {
                 justify="start"
                 onClick={() => setIsOpen(true)}
             >
-                {props.textBtnOpen}
+                {textBtnOpen}
             </Button>
 
             <Modal open={isOpen}>
                 <Alert color="danger">
-                    <Font.P>{props.text}</Font.P>
+                    <Font.P>{text}</Font.P>
 
                     <ButtonsContainer>
-                        <Button color="danger" onClick={props.onClickPrimary}>
-                            {props.textBtnPrimary}
+                        <Button color="danger" onClick={onClickPrimary}>
+                            {textBtnPrimary}
                         </Button>
 
                         <Button

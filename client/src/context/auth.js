@@ -7,7 +7,7 @@ import authService from "../api/auth.service"
 // Create context
 const AuthContext = createContext()
 
-const AuthProviderWrapper = props => {
+const AuthProviderWrapper = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [user, setUser] = useState(null)
@@ -61,9 +61,17 @@ const AuthProviderWrapper = props => {
 
     return (
         <AuthContext.Provider
-            value={{ isLoggedIn, isLoading, user, setUser, loginUser, logoutUser, setToken }}
+            value={{
+                isLoggedIn,
+                isLoading,
+                user,
+                setUser,
+                loginUser,
+                logoutUser,
+                setToken,
+            }}
         >
-            {props.children}
+            {children}
         </AuthContext.Provider>
     )
 }
