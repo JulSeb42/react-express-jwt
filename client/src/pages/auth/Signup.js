@@ -16,19 +16,22 @@ const Signup = () => {
     const navigate = useNavigate()
 
     // Form items
-    const [fullName, setFullName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [inputs, setInputs] = useState({
+        fullName: "",
+        email: "",
+        password: "",
+    })
     const [validation, setValidation] = useState("not-passed")
     const [errorMessage, setErrorMessage] = useState(undefined)
 
     // Form handles
-    const handleFullName = e => setFullName(e.target.value)
-    const handleEmail = e => setEmail(e.target.value)
-    const handlePassword = e => {
-        setPassword(e.target.value)
+    const handleChange = e => {
+        setInputs({
+            ...inputs,
+            [e.target.id]: e.target.value,
+        })
 
-        if (passwordRegex.test(e.target.value)) {
+        if (e.target.id === "password" && passwordRegex.test(e.target.value)) {
             setValidation("passed")
         } else {
             setValidation("not-passed")
@@ -40,9 +43,7 @@ const Signup = () => {
         e.preventDefault()
 
         const requestBody = {
-            fullName,
-            email,
-            password,
+            ...inputs,
             verifyToken: getRandomString(20),
         }
 
@@ -66,8 +67,8 @@ const Signup = () => {
                 <Input
                     label="Full name"
                     id="fullName"
-                    onChange={handleFullName}
-                    value={fullName}
+                    onChange={handleChange}
+                    value={inputs.fullName}
                     autoFocus
                 />
 
@@ -75,8 +76,8 @@ const Signup = () => {
                     label="Email"
                     id="email"
                     type="email"
-                    onChange={handleEmail}
-                    value={email}
+                    onChange={handleChange}
+                    value={inputs.email}
                 />
 
                 <Input
@@ -84,8 +85,8 @@ const Signup = () => {
                     id="password"
                     password
                     iconPassword
-                    onChange={handlePassword}
-                    value={password}
+                    onChange={handleChange}
+                    value={inputs.password}
                     validationText="Password must be at least 6 characters long and must contain at least one number, one lowercase and one uppercase letter."
                     validation={validation}
                 />

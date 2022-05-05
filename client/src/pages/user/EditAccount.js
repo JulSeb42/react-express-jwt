@@ -16,20 +16,21 @@ const EditAccount = ({ edited, setEdited }) => {
     const navigate = useNavigate()
 
     // Form items
-    const [fullName, setFullName] = useState(user.fullName)
+    const [inputs, setInputs] = useState({
+        fullName: user.fullName,
+    })
     const [errorMessage, setErrorMessage] = useState(undefined)
 
     // Form handles
-    const handleFullName = e => setFullName(e.target.value)
+    const handleChange = e =>
+        setInputs({ ...inputs, [e.target.id]: e.target.value })
 
     // Submit form
     const handleSubmit = e => {
         e.preventDefault()
 
-        const requestBody = { fullName }
-
         userService
-            .editAccount(user._id, requestBody)
+            .editAccount(user._id, inputs)
             .then(res => {
                 setUser(res.data.user)
                 setToken(res.data.authToken)
@@ -63,8 +64,8 @@ const EditAccount = ({ edited, setEdited }) => {
                 <Input
                     label="Full name"
                     id="fullName"
-                    onChange={handleFullName}
-                    value={fullName}
+                    onChange={handleChange}
+                    value={inputs.fullName}
                     autoFocus
                 />
 

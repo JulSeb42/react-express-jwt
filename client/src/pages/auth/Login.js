@@ -15,22 +15,21 @@ const Login = () => {
     const navigate = useNavigate()
 
     // Form items
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: "",
+    })
     const [errorMessage, setErrorMessage] = useState("")
 
     // Form handles
-    const handleEmail = e => setEmail(e.target.value)
-    const handlePassword = e => setPassword(e.target.value)
+    const handleChange = e => setInputs({ ...inputs, [e.target.id]: e.target.value})
 
     // Submit form
     const handleSubmit = e => {
         e.preventDefault()
 
-        const requestBody = { email, password }
-
         authService
-            .login(requestBody)
+            .login(inputs)
             .then(res => {
                 loginUser(res.data.authToken)
                 navigate(-1)
@@ -50,8 +49,8 @@ const Login = () => {
                     label="Email"
                     id="email"
                     type="email"
-                    onChange={handleEmail}
-                    value={email}
+                    onChange={handleChange}
+                    value={inputs.email}
                     autoFocus
                 />
 
@@ -60,8 +59,8 @@ const Login = () => {
                     id="password"
                     password
                     iconPassword
-                    onChange={handlePassword}
-                    value={password}
+                    onChange={handleChange}
+                    value={inputs.password}
                 />
             </Form>
 
