@@ -2,7 +2,7 @@
 require("dotenv/config")
 const mongoose = require("mongoose")
 const bcrypt = require("bcryptjs")
-const { getRandomString } = require("js-utils-julseb")
+const { getRandomString } = require("ts-utils-julseb")
 
 // Model
 const User = require("../models/User.model")
