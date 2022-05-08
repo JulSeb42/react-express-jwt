@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Font, Form, Input, Alert } from "tsx-library-julseb"
-import { getRandomString, passwordRegex } from "ts-utils-julseb"
+import { passwordRegex } from "ts-utils-julseb"
 
 // API
 import { AuthContext } from "../../context/auth"
@@ -42,13 +42,8 @@ const Signup = () => {
     const handleSubmit = e => {
         e.preventDefault()
 
-        const requestBody = {
-            ...inputs,
-            verifyToken: getRandomString(20),
-        }
-
         authService
-            .signup(requestBody)
+            .signup(inputs)
             .then(res => {
                 loginUser(res.data.authToken)
                 navigate("/thank-you")

@@ -34,7 +34,7 @@ const Header = () => {
                         : "button"
                 }
                 to={to}
-                logo={logo}
+                logo={logo ? 1 : 0}
                 onClick={onClick && onClick}
             >
                 {children}

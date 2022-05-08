@@ -2,6 +2,7 @@
 import styled from "@emotion/styled"
 import { css } from "@emotion/react"
 import { Burger, Variables } from "tsx-library-julseb"
+import PropTypes from "prop-types"
 
 // Styles
 const Container = styled.header`
@@ -71,10 +72,15 @@ const MenuLinkStyled = styled.span`
     }
 
     ${props =>
-        props.logo &&
-        css`
-            font-weight: ${Variables.FontWeights.Black};
-        `}
+        props.logo ? css`font-weight: ${Variables.FontWeights.Black};` : ""}
 `
+
+Nav.propTypes = {
+    isOpen: PropTypes.bool,
+}
+
+MenuLinkStyled.propTypes = {
+    logo: PropTypes.number,
+}
 
 export { Container, MenuButton, Nav, MenuLinkStyled }

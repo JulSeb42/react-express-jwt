@@ -10,7 +10,11 @@ const User = require("../models/User.model")
 const { isAuthenticated } = require("../middleware/jwt.middleware")
 
 // Utils
-const { passwordRegex, emailRegex } = require("ts-utils-julseb")
+const {
+    passwordRegex,
+    emailRegex,
+    getRandomString,
+} = require("ts-utils-julseb")
 const jwtConfig = require("../utils/jwtConfig")
 const transporter = require("../utils/transporter")
 
@@ -19,7 +23,8 @@ const saltRounds = 10
 
 // Signup
 router.post("/signup", (req, res, next) => {
-    const { email, fullName, password, verifyToken } = req.body
+    const { email, fullName, password } = req.body
+    const verifyToken = getRandomString(20)
 
     if (!fullName) {
         return res
@@ -159,7 +164,8 @@ router.put("/verify", (req, res, next) => {
 
 // Forgot password
 router.post("/forgot-password", (req, res, next) => {
-    const { email, resetToken } = req.body
+    const { email } = req.body
+    const resetToken = getRandomString(20)
 
     if (!emailRegex.test(email)) {
         return res.status(400).json({ message: "Please enter a valid email." })
@@ -224,10 +230,9 @@ router.put("/reset-password", (req, res, next) => {
 
             User.findByIdAndUpdate(
                 id,
-                { password: hashedPassword },
+                { password: hashedPassword, resetToken: "" },
                 { new: true }
-            )
-            .then(updatedUser => {
+            ).then(updatedUser => {
                 res.status(200).json({ user: updatedUser })
             })
         })
