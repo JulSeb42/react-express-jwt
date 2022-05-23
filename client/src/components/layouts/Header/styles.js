@@ -1,10 +1,9 @@
-// Packages
-import styled from "@emotion/styled"
-import { css } from "@emotion/react"
+// Imports
+import styled, { css } from "styled-components"
+import { NavLink } from "react-router-dom"
 import { Burger, Variables } from "tsx-library-julseb"
 import PropTypes from "prop-types"
 
-// Styles
 const Container = styled.header`
     width: 100%;
     display: flex;
@@ -50,7 +49,7 @@ const Nav = styled.nav`
     }
 `
 
-const MenuLinkStyled = styled.span`
+const MenuLinkStyled = styled(NavLink)`
     text-decoration: none;
     color: ${Variables.Colors.Primary500};
     transition: ${Variables.Transitions.Short};
@@ -72,7 +71,10 @@ const MenuLinkStyled = styled.span`
     }
 
     ${props =>
-        props.logo ? css`font-weight: ${Variables.FontWeights.Black};` : ""}
+        props.logo &&
+        css`
+            font-weight: ${Variables.FontWeights.Black};
+        `}
 `
 
 Nav.propTypes = {

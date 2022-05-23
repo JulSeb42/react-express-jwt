@@ -1,14 +1,12 @@
-// Packages
+// Imports
 import React, { useState, useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Font, Form, Input, Alert } from "tsx-library-julseb"
 import { passwordRegex } from "ts-utils-julseb"
 
-// API
 import { AuthContext } from "../../context/auth"
 import authService from "../../api/auth.service"
 
-// Components
 import Page from "../../components/layouts/Page"
 
 const Signup = () => {
@@ -55,7 +53,7 @@ const Signup = () => {
     }
 
     return (
-        <Page title="Sign up" template="form">
+        <Page title="Sign up" mainWidth={400}>
             <Font.H1>Create an account</Font.H1>
 
             <Form btnPrimary="Create your account" onSubmit={handleSubmit}>

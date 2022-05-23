@@ -1,18 +1,14 @@
-// Packages
+// Imports
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { BrowserRouter } from "react-router-dom"
 
-// API
 import { AuthProviderWrapper } from "./context/auth"
 
-// Components
 import App from "./App"
 
-// Tests
 import reportWebVitals from "./tests/reportWebVitals"
 
-// Styles
 import "tsx-library-julseb/index.css"
 import "./styles/root.css"
 

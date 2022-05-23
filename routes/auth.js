@@ -1,15 +1,12 @@
-// Packages
+// Imports
 const router = require("express").Router()
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
-// Model
 const User = require("../models/User.model")
 
-// Middleware
 const { isAuthenticated } = require("../middleware/jwt.middleware")
 
-// Utils
 const {
     passwordRegex,
     emailRegex,

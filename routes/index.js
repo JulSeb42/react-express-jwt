@@ -1,6 +1,5 @@
 const router = require("express").Router()
 
-// Middleware
 const { isAuthenticated } = require("../middleware/jwt.middleware")
 
 router.get("/", (req, res, next) => {
