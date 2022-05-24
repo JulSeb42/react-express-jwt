@@ -11,7 +11,7 @@ const {
     passwordRegex,
     emailRegex,
     getRandomString,
-} = require("ts-utils-julseb")
+} = require("js-utils-julseb")
 const jwtConfig = require("../utils/jwtConfig")
 const transporter = require("../utils/transporter")
 

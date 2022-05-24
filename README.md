@@ -34,7 +34,7 @@ Run `npm run dev` at the root of the project. Once again, thanks to Concurrently
 -   [Bcrypt js](https://www.npmjs.com/package/bcryptjs)
 -   [Mongoose](https://mongoosejs.com/)
 -   [Nodemailer](https://nodemailer.com/about/)
--   [TS utils](https://www.npmjs.com/package/ts-utils-julseb): own package, with basic functions written in TypeScript
+-   [JS utils](https://www.npmjs.com/package/js-utils-julseb): own package, with basic functions written in JavaScript
 
 ### Frontend
 
@@ -42,7 +42,7 @@ Run `npm run dev` at the root of the project. Once again, thanks to Concurrently
 -   [Axios](https://axios-http.com/docs/intro)
 -   [Styled components](https://styled-components.com/)
 -   [TSX library](https://documentation-components-react.vercel.app/): own package, with basic React UI components
--   [TS utils](https://www.npmjs.com/package/ts-utils-julseb)
+-   [JS utils](https://www.npmjs.com/package/js-utils-julseb)
 
 ## Backend
 

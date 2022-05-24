@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Font, Form, Input, Alert } from "tsx-library-julseb"
-import { passwordRegex } from "ts-utils-julseb"
+import { passwordRegex } from "js-utils-julseb"
 
 import { AuthContext } from "../../context/auth"
 import authService from "../../api/auth.service"
